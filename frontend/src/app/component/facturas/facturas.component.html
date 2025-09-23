@@ -1,0 +1,65 @@
+<!-- Mensaje de error -->
+<div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+
+<h2>Facturas</h2>
+<!-- Tabla de facturas -->
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Fecha</th>
+            <th>Cliente</th>
+            <th>Total</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let f of facturas" (dblclick)="mostrarFactura(f.id_venta)" style="cursor:pointer;">
+            <td>{{ f.id_venta }}</td>
+            <td>{{ f.fecha | date }}</td>
+            <td>{{ f.cliente?.nombre }}</td>
+            <td>{{ f.total | currency:'USD':'symbol' }}</td>
+        </tr>
+    </tbody>
+</table>
+
+<div *ngIf="facturaSeleccionada">
+    <div class="modal-content" style="background:white; padding:20px; border-radius:5px;">
+        <h3>Factura #{{ facturaSeleccionada.id_venta }}</h3>
+
+        <p>
+            <strong>Cliente:</strong> {{ facturaSeleccionada.cliente?.nombre }} - {{
+            facturaSeleccionada.cliente?.telefono }}
+        </p>
+        <p>
+            <strong>Veterinaria:</strong> {{ facturaSeleccionada.veterinaria?.nombre }} - Telefono: {{
+            facturaSeleccionada.veterinaria?.telefono }}
+        </p>
+        <p>
+            <strong>Correo:</strong> {{ facturaSeleccionada.veterinaria?.correo }}
+        </p>
+        <p>
+            <strong>Dirección:</strong> {{ facturaSeleccionada.veterinaria?.direccion }}
+        </p>
+
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Producto</th>
+                    <th>Cantidad</th>
+                    <th>Subtotal</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let p of facturaSeleccionada.productos">
+                    <td>{{ p.nombre }}</td>
+                    <td>{{ p.cantidad }}</td>
+                    <td>{{ p.subtotal | currency:'L.':'symbol' }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p><strong>Total:</strong> {{ facturaSeleccionada.total | currency:'L.':'symbol' }}</p>
+        <button (click)="cerrarFactura()" class="btn btn-primary">Cerrar</button>
+    </div>
+</div>
