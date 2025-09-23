@@ -1,0 +1,68 @@
+<div class="sale-container">
+    <h2>Registro de Venta</h2>
+
+    <!-- Datos del cliente -->
+    <div class="client-info">
+        <label>Nombre del Cliente:</label>
+        <input type="text" placeholder="Ingrese el nombre del cliente" />
+
+        <label>Teléfono:</label>
+        <input type="text" placeholder="Ingrese el teléfono" />
+    </div>
+
+    <button class="open-modal-btn" onclick="openModal()">Seleccionar Productos</button>
+
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h3>Productos / Servicios</h3>
+            <div class="products-grid">
+                <div class="product-card">
+                    <p>Vacuna Antirrábica</p>
+                    <p>$15</p>
+                    <p>Cantidad: 1</p>
+                </div>
+                <div class="product-card">
+                    <p>Consulta General</p>
+                    <p>$10</p>
+                    <p>Cantidad: 2</p>
+                </div>
+                <div class="product-card">
+                    <p>Desparasitación</p>
+                    <p>$12</p>
+                    <p>Cantidad: 0</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Detalle de la venta -->
+    <div class="cart">
+        <h3>Detalle de la Venta</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Producto/Servicio</th>
+                    <th>Cantidad</th>
+                    <th>Subtotal</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Vacuna Antirrábica</td>
+                    <td>1</td>
+                    <td>$15.00</td>
+                </tr>
+                <tr>
+                    <td>Consulta General</td>
+                    <td>2</td>
+                    <td>$20.00</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Total: $35.00</h3>
+    </div>
+
+    <button>Registrar Venta</button>
+</div>
