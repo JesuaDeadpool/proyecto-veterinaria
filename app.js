@@ -9,6 +9,7 @@ app.use(express.json());
 
 
 
+
 /*Obtener lista de Productos*/
 app.get('/productos',(req,res)=>{
     const sql= "Select * from Producto";
