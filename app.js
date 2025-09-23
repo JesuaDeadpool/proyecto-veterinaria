@@ -9,28 +9,6 @@ app.use(express.json());
 
 
 
-// const pool = mysql.createPool({
-
-//     host: 'localhost',
-//     user:       process.env.DB_USER,
-//     password:   process.env.DB_PASS,
-//     database:   process.env.DB_NAME
-
-// });
-
-const promisePool= pool.promise();
-
-module.exports = promisePool;
-
-// pool.getConnection((error,connection)=>{
-//     if(error){
-//         console.log('Error de conexion');
-//     }
-//     else{
-//         console.log('Conexion Exitosa');
-//     }
-// });
-
 /*Obtener lista de Productos*/
 app.get('/productos',(req,res)=>{
     const sql= "Select * from Producto";
